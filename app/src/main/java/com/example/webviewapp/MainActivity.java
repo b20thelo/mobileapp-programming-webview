@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
+        // external     myWebView.loadUrl("http://www.his.se");
+
+        myWebView.loadUrl("file:///android_asset/about.html");
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
