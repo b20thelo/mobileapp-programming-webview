@@ -1,42 +1,59 @@
+RAPPORT ASSIGNMENT 2.
 
-# Rapport
+I denna uppgift har jag lärt mig flera saker varav några är att byta namn på appen, ge appen
+tillgång till internet vilket behövs för att kunna visa webbsidor och sedan att skapa en WebView.
+Min WebView skapade jag genom att gå in i resursmappen och där öppna upp laoutfilen och skapa
+ett WebView-element. Jag gav WebViewelementet ett id och ändrade så att layouten skulle matcha
+parent på både höjd och bredd då jag ville att storleken skulle vara samma som själva appen.
 
-**Skriv din rapport här!**
+I Mainactivity skapade jag sedan en privat variabel som jag namngav myWebView och sedan i onCreate()
+lade jag till min WebView och och anropade WebViewelement jag tidigare skapat i layoutfilen
+med hjälp av det id jag gav elementet. Sedan aktiverade jag Javascript så det kan köras.
 
-_Du kan ta bort all text som finns sedan tidigare_.
+För att ha något att visa i appen skapa jag en lokal html-sida som jag la i en asset-mapp.
+Jag skrev lite vanlig html-kod i den för att ha något att visa och kunna se att den faktiskt visas
+när jag sedan kopplade den till menyalternativet "Internal Web Page" och klickade på det.
+Jag skapade även en koppling till en extern hemsida där jag valde his.se.
 
-## Följande grundsyn gäller dugga-svar:
+KODSNUTT FRÅN MIN APP.
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+Här har jag lagt in funktion som läser in en extern och sedan intern hemsida.
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+public void showExternalWebPage(){
+        myWebView.loadUrl("https://www.his.se/");
     }
+public void showInternalWebPage(){
+    myWebView.loadUrl("file:///android_asset/about.html");
 }
 ```
+Här har jag lagt in så att funktionerna showExternalWebPage() och showIxternalWebPage() anropas när
+man klickar på externa eller  interna hemsidan i menyn.
+```
+@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
 
-Bilder läggs i samma mapp som markdown-filen.
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_external_web) {
+            Log.d("==>","Will display external web page");
+            showExternalWebPage();
+            return true;
+        }
 
-![](android.png)
+        if (id == R.id.action_internal_web) {
+            Log.d("==>","Will display internal web page");
+            showInternalWebPage();
+            return true;
+        }
 
-Läs gärna:
+        return super.onOptionsItemSelected(item);
+    }
+```
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+Med i projektet finns även screenshot tagna med Android virtual device. Filer som visar resultatet
+av kodsnuttarna ovan är döpta till:
+- App_externalwebpage.png
+- App_internalwebpage.png
