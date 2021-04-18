@@ -53,7 +53,6 @@ man klickar på externa eller  interna hemsidan i menyn.
     }
 ```
 
-Med i projektet finns även screenshot tagna med Android virtual device. Filer som visar resultatet
-av kodsnuttarna ovan är döpta till:
-- App_externalwebpage.png
-- App_internalwebpage.png
+Här är screenshot tagna med Android virtual device.
+![alt text](https://github.com/b20thelo/mobileapp-programming-webview/blob/d6a9a0d520cc5ba4c5b3af7f7ef8ae106250fec0/App_externalwebpage.png)
+![alt text](https://github.com/b20thelo/mobileapp-programming-webview/blob/d6a9a0d520cc5ba4c5b3af7f7ef8ae106250fec0/App_internalwebpage.png)
